@@ -22,6 +22,12 @@ exports.getAllSellers = async (req, res) => {
 exports.getCatalogOfSeller = async (req, res) => {
   try {
     const catalog = await Catalog.findOne({ seller: req.params.seller_id });
+    if (!catalog) {
+      return res.status(400).json({
+        status: "fail",
+        message: "No catalog found with the seller id provided",
+      });
+    }
     return res.status(200).json({
       status: "success",
       catalog,

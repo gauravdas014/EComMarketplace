@@ -23,6 +23,12 @@ exports.createCatalog = async (req, res) => {
 exports.getAllOrders = async (req, res) => {
   try {
     const orders = await Order.find({ seller: req.params.seller_id });
+    if (!orders) {
+      return res.status(400).json({
+        status: "fail",
+        message: "No orders found for the seller",
+      });
+    }
     return res.status(200).json({
       status: "success",
       orders,
