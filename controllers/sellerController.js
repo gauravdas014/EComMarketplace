@@ -1,4 +1,5 @@
 const Catalog = require("../models/catalogModel");
+const Order = require("../models/orderModel");
 
 exports.createCatalog = async (req, res) => {
   try {
@@ -21,6 +22,11 @@ exports.createCatalog = async (req, res) => {
 
 exports.getAllOrders = async (req, res) => {
   try {
+    const orders = await Order.find({ seller: req.params.seller_id });
+    return res.status(200).json({
+      status: "success",
+      orders,
+    });
   } catch (err) {
     res.status(400).json({
       status: "fail",
