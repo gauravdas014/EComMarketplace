@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Catalog = require("../models/catalogModel");
 
 exports.getAllSellers = async (req, res) => {
   try {
@@ -19,7 +20,13 @@ exports.getAllSellers = async (req, res) => {
 
 exports.getCatalogOfSeller = async (req, res) => {
   try {
+    const catalog = await Catalog.findOne({ seller: req.params.seller_id });
+    return res.status(200).json({
+      status: "success",
+      catalog,
+    });
   } catch (err) {
+    console.log(err);
     res.status(400).json({
       status: "fail",
       message: err,
