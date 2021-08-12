@@ -6,16 +6,7 @@ const catalogSchema = new mongoose.Schema({
     ref: "User",
     unique: true,
   },
-  products: [
-    {
-      name: {
-        type: String,
-      },
-      price: {
-        type: String,
-      },
-    },
-  ],
+  products: [Object],
 });
 
 module.exports = mongoose.model("Catalog", catalogSchema);

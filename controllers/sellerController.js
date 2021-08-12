@@ -4,6 +4,13 @@ const Order = require("../models/orderModel");
 exports.createCatalog = async (req, res) => {
   try {
     const sellerId = req.params.seller_id;
+    const catalog = await Catalog.findOne({ seller: req.params.seller_id });
+    if (catalog) {
+      return res.status(400).json({
+        status: "fail",
+        message: "Catalog already exists for the seller",
+      });
+    }
     const newCatalog = await Catalog.create({
       seller: sellerId,
       products: req.body.products,

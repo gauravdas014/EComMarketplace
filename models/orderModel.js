@@ -9,16 +9,7 @@ const orderSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "User",
   },
-  products: [
-    {
-      name: {
-        type: String,
-      },
-      price: {
-        type: String,
-      },
-    },
-  ],
+  products: [Object],
 });
 
 module.exports = mongoose.model("Order", orderSchema);
