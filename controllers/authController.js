@@ -33,7 +33,7 @@ exports.signup = async (req, res) => {
       name: req.body.name,
       email: req.body.email,
       phone: req.body.phone,
-      type: req.body.role,
+      type: req.body.type,
       password: req.body.password,
     });
 
@@ -71,6 +71,7 @@ exports.signin = async (req, res) => {
       createSendToken(user, 200, req, res);
     }
   } catch (err) {
+    console.log(err);
     res.status(400).json({
       status: "fail",
       message: err,

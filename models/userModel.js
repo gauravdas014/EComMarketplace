@@ -21,6 +21,9 @@ const userSchema = new mongoose.Schema(
       type: String,
       enum: ["buyer", "seller"],
     },
+    password: {
+      type: String,
+    },
     token: {
       type: String,
     },
@@ -29,5 +32,12 @@ const userSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+userSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
 
 module.exports = mongoose.model("User", userSchema);

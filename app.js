@@ -3,7 +3,8 @@ const express = require("express");
 dotenv.config({ path: "./config.env" });
 const morgan = require("morgan");
 
-// const userRouter = require("./routes/userRoutes");
+const authRouter = require("./routes/authRoutes");
+const buyerRouter = require("./routes/buyerRoutes");
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.get("/", (req, res) => {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// app.use("/api/v1/user", userRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/buyer", buyerRouter);
 
 module.exports = app;
