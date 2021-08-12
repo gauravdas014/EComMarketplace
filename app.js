@@ -5,6 +5,7 @@ const morgan = require("morgan");
 
 const authRouter = require("./routes/authRoutes");
 const buyerRouter = require("./routes/buyerRoutes");
+const sellerRouter = require("./routes/sellerRoutes");
 
 const app = express();
 
@@ -21,5 +22,6 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", authRouter);
 app.use("/api/buyer", buyerRouter);
+app.use("/api/seller", sellerRouter);
 
 module.exports = app;
