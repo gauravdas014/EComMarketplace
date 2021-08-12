@@ -1,0 +1,9 @@
+{
+  "name": "EComMarketplace",
+  "version": "1.0.0",
+  "description": "API for a Ecom marketplace",
+  "main": "server.js",
+  "repository": "git@github.com:gauravdas014/EComMarketplace.git",
+  "author": "Gaurav Das <gauravdas014@gmail.com>",
+  "license": "MIT"
+}
